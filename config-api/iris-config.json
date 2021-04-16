@@ -1,0 +1,26 @@
+{
+    "Defaults":{                    
+        "DBDIR" : "${MGRDIR}",      
+        "WEBAPPDIR" : "${CSPDIR}"   
+    },
+    "SYS.Databases":{              
+        "${DBDIR}irisapp/data/" : {    
+            "ExpansionSize":128    
+        },
+        "${DBDIR}irisapp/code/": {}    
+    },
+    "Databases":{                              
+        "MYAPPDATA" : {                        
+            "Directory" : "${DBDIR}irisapp/data/"  
+        },
+        "MYAPPCODE" : {
+            "Directory" : "${DBDIR}irisapp/code/"
+        }
+    },
+    "Namespaces":{                  
+        "IRISAPP": {                  
+            "Globals":"MYAPPDATA",  
+            "Routines":"MYAPPCODE"  
+        }
+    }
+ }

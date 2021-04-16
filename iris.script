@@ -2,10 +2,12 @@
 zn "%SYS"
 Do ##class(Security.Users).UnExpireUserPasswords("*")
 
-// create IRISAPP namespace
-do $SYSTEM.OBJ.Load("/opt/irisbuild/Installer.cls", "ck") 
-set sc = ##class(App.Installer).setup() 
+// Add deployment package
+zn "USER"
+zpm "install config-api"
 
+// create IRISAPP namespace
+set sc = ##class(Api.Config.Services.Loader).LoadFromInvoke("/opt/irisbuild/config-api/iris-config.json") 
 
 zn "IRISAPP"
 zpm "load /opt/irisbuild/ -v":1:1
